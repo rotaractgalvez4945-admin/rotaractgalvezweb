@@ -762,8 +762,8 @@ body {
   <img src="photos/logo_1.png" alt="foto 1" class="foto_logo">
   <p style="font-family:cursive;" class="texto_inicio" > "Transformá realidades, potenciá tu liderazgo y 
     sumate a una comunidad única. ¡Te esperamos! 🚀✨</p>
-  <button class="button" type="button" onclick="if(confirm('Advertencia! Este ingreso es solo para socios ya registrados. Si no sos socio hace click en cancelar.')) { window.location.href='https://terabox.com/s/1uJZ_SKHqggFRq5Nf6PPwZA'; }">Inicio Socios</button>
-</div>
+  <button class="button" type="button" onclick="verificarAcceso()">Inicio Socios</button>
+  </div>
 
 <div class="rayita_1"></div>
 
@@ -778,11 +778,104 @@ body {
      <button class="faq_boton" type="button" onclick="FAQ()">FAQ</button>
 
 <script>
+
+function verificarAcceso() {
+    if (confirm('Advertencia! Este ingreso es solo para socios ya registrados. Si no sos socio hace click en cancelar.')) {
+        const password = prompt('Ingrese la contraseña:');
+        if (password === 'mitre959') {
+            const nuevaVentana = window.open('', '_blank'); 
+            nuevaVentana.document.write(`
+                <html>
+                <head>
+                    <title>Panel de Socios - Rotaract</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            background: linear-gradient(135deg, #f8f9fa, #ffe4e6);
+                            margin: 0;
+                            padding: 40px;
+                            text-align: center;
+                            min-height: 100vh;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                        .container {
+                            background: white;
+                            padding: 40px;
+                            border-radius: 15px;
+                            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+                            max-width: 500px;
+                            width: 100%;
+                        }
+                        h2 {
+                            color: #d63384;
+                            margin-bottom: 30px;
+                            font-size: 28px;
+                        }
+                        .link-button {
+                            display: inline-block;
+                            background: linear-gradient(45deg, #d63384, #f8d7da);
+                            color: white;
+                            text-decoration: none;
+                            padding: 15px 30px;
+                            margin: 10px;
+                            border-radius: 25px;
+                            font-size: 16px;
+                            font-weight: bold;
+                            transition: transform 0.3s ease;
+                            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.3);
+                        }
+                        .link-button:hover {
+                            transform: translateY(-2px);
+                            box-shadow: 0 6px 20px rgba(214, 51, 132, 0.4);
+                        }
+                        .note {
+                            background: #fff0f3;
+                            border: 2px solid #f8d7da;
+                            border-radius: 10px;
+                            padding: 15px;
+                            margin-top: 25px;
+                            color: #721c24;
+                            font-style: italic;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <h2> Panel de Socios Rotaract </h2>
+                        
+                        <a href="https://www.terabox.app/sharing/init?surl=GnJ6n16G77toqM5myog0AQ" target="_blank" class="link-button">
+                            📁 Acceso a Archivos
+                        </a>
+                        
+                        <br><br>
+                        
+                        <a href="https://www.terabox.com/wap/spanish" target="_blank" class="link-button">
+                            ⬆️ Subir Archivos
+                        </a>
+                        
+                        <div class="note">
+                            <strong>Importante:</strong> Debe acceder desde la cuenta de Google de Rotaract
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `);
+        } else if (password !== null) {
+            alert('Contraseña incorrecta.');
+        }
+    }
+}
+
 function FAQ() {
     const newWindow = window.open('', 'faq_' + Math.random().toString(36).substr(2, 9)); //coso randomizacion de reddit
     
     // PARA EVITAR FALLA CON ABRIR Y CERRAR, LO MISMO QUE LO DE ARRIBA 
     const headContent = document.head.innerHTML;
+
+    
     
     // NO CAMBIAR EL HEADCONTENT DEJAR AHI, NO TOCARRRR DIOS TRES HORAS ESTUVISTE renegando
     newWindow.document.write(`
@@ -797,10 +890,12 @@ function FAQ() {
     newWindow.document.body.innerHTML = `
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+
     <div class="header">
   <img src="photos/logo_1.png" alt="foto 1" class="foto_logo">
   <p style="font-family:cursive; font-size: 2vw;" class="texto_inicio" > FAQ: Explora nuestras preguntas frecuentes y sus respuestas.</p>
-  <button class="button" type="button" onclick="alert('Hola test inicio de sesion')">Inicio Socios</button>
+ 
+
 </div>
 
 <div class="rayita_1"></div>
@@ -951,9 +1046,13 @@ function FAQ() {
     <span class="red_texto">FACEBOOK:</span>
     <a class="icono" href="https://www.facebook.com/p/Rotaract-Galvez-100077503474026/" target="_blank"><i class="fab fa-facebook-f"></i></a>
   </div>
+
+  
 </div>
     `;
+    
 }
+
 </script>
     <div class="cuadro_faq"></div>
 
